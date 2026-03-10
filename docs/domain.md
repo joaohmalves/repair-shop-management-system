@@ -1,116 +1,136 @@
 # Domain Overview | Visão Geral do Domínio
 
-🇺🇸 English
-
-🇧🇷 Português
-
+---
 
 # 🇺🇸 English Version
 
 ## Overview
 
-This document describes the core business domain of the **Repair Shop Management System**.
+This document describes the **core business domain** of the **Repair Shop Management System**.
 
-The purpose of this system is to help repair shops manage customers, devices, technicians, service orders and payments.
+The purpose of this system is to help repair shops manage:
 
-The goal is to model the business domain clearly so that both developers and business stakeholders share the same understanding of the system.
+- Customers
+- Devices
+- Technicians
+- Service Orders
+- Payments
+
+The goal is to **model the business domain clearly**, allowing **developers and business stakeholders to share the same understanding of the system**.
 
 ---
 
 ## Ubiquitous Language
 
-The following concepts define the shared language used throughout the system.
-
-### Customer
-
-Represents a client of the repair shop.
-
-A customer can own multiple devices that may require repair services.
-
-Attributes:
-
-- id
-- name
-- phone
-- email
-- created_at
+The following concepts define the **shared language used throughout the system**.
 
 ---
 
-### Device
+## Customer
 
-Represents an electronic device owned by a customer.
+Represents a **client of the repair shop**.
 
-Examples:
+A customer can own **multiple devices** that may require repair services.
 
-- smartphone
-- laptop
-- tablet
+### Attributes
 
-A device belongs to one customer but may have multiple service orders over time.
-
-Attributes:
-
-- id
-- customer_id
-- brand
-- model
-- serial_number
+| Attribute | Description |
+|----------|-------------|
+| id | Unique identifier |
+| name | Customer name |
+| phone | Contact phone |
+| email | Contact email |
+| created_at | Record creation date |
 
 ---
 
-### Technician
+## Device
 
-Represents a professional responsible for performing repair services.
+Represents an **electronic device owned by a customer**.
 
-A technician may work on multiple service orders depending on their specialization.
+### Examples
 
-Attributes:
+- Smartphone
+- Laptop
+- Tablet
 
-- id
-- name
-- specialization
-- created_at
+A device **belongs to one customer**, but may have **multiple service orders over time**.
 
----
+### Attributes
 
-### Service Order
-
-Represents a repair request created for a device.
-
-A service order may involve multiple technicians and multiple repair services.
-
-Possible statuses:
-
-- OPEN
-- IN_PROGRESS
-- WAITING_PART
-- COMPLETED
-- CANCELLED
-
-Attributes:
-
-- id
-- device_id
-- status
-- description
-- created_at
+| Attribute | Description |
+|----------|-------------|
+| id | Unique identifier |
+| customer_id | Owner customer |
+| brand | Device brand |
+| model | Device model |
+| serial_number | Unique serial number |
 
 ---
 
-### Payment
+## Technician
 
-Represents a payment made for a service order.
+Represents a **professional responsible for performing repair services**.
 
-Payments may be partial or full depending on the business rules.
+A technician may work on **multiple service orders depending on their specialization**.
 
-Attributes:
+### Attributes
 
-- id
-- service_order_id
-- amount
-- payment_method
-- created_at
+| Attribute | Description |
+|----------|-------------|
+| id | Unique identifier |
+| name | Technician name |
+| specialization | Area of expertise |
+| created_at | Record creation date |
+
+---
+
+## Service Order
+
+Represents a **repair request created for a device**.
+
+A service order may involve:
+
+- Multiple technicians
+- Multiple repair services
+
+### Possible Status
+
+
+OPEN
+IN_PROGRESS
+WAITING_PART
+COMPLETED
+CANCELLED
+
+
+### Attributes
+
+| Attribute | Description |
+|----------|-------------|
+| id | Unique identifier |
+| device_id | Device being repaired |
+| status | Current status |
+| description | Problem description |
+| created_at | Record creation date |
+
+---
+
+## Payment
+
+Represents a **payment made for a service order**.
+
+Payments may be **partial or full**, depending on the business rules.
+
+### Attributes
+
+| Attribute | Description |
+|----------|-------------|
+| id | Unique identifier |
+| service_order_id | Related service order |
+| amount | Payment amount |
+| payment_method | Payment type |
+| created_at | Record creation date |
 
 ---
 
@@ -118,12 +138,12 @@ Attributes:
 
 The system follows the rules below:
 
-- A customer can own multiple devices.
-- A device belongs to exactly one customer.
-- A device can have multiple service orders over time.
-- A service order can be assigned to multiple technicians.
-- A service order can contain multiple service items.
-- Payments can be partial or full.
+- A **customer can own multiple devices**
+- A **device belongs to exactly one customer**
+- A **device can have multiple service orders over time**
+- A **service order can be assigned to multiple technicians**
+- A **service order can contain multiple service items**
+- **Payments can be partial or full**
 
 ---
 
@@ -131,108 +151,131 @@ The system follows the rules below:
 
 ## Visão Geral
 
-Este documento descreve o domínio de negócio do **Sistema de Gestão de Assistência Técnica**.
+Este documento descreve o **domínio de negócio do Sistema de Gestão de Assistência Técnica**.
 
-O objetivo do sistema é ajudar assistências técnicas a gerenciar clientes, dispositivos, técnicos, ordens de serviço e pagamentos.
+O objetivo do sistema é ajudar assistências técnicas a gerenciar:
 
-A ideia é modelar o domínio do negócio de forma clara para que desenvolvedores e especialistas do negócio compartilhem o mesmo entendimento do sistema.
+- Clientes
+- Dispositivos
+- Técnicos
+- Ordens de Serviço
+- Pagamentos
+
+A ideia é **modelar o domínio do negócio de forma clara**, permitindo que **desenvolvedores e especialistas do negócio compartilhem o mesmo entendimento do sistema**.
 
 ---
 
 ## Linguagem Ubíqua (Ubiquitous Language)
 
-Os conceitos abaixo representam os principais termos utilizados no sistema.
-
-### Customer (Cliente)
-
-Representa um cliente da assistência técnica.
-
-Um cliente pode possuir vários dispositivos que podem precisar de reparo.
-
-Atributos:
-
-- id
-- name
-- phone
-- email
-- created_at
+Os conceitos abaixo representam os **principais termos utilizados no sistema**.
 
 ---
 
-### Device (Dispositivo)
+## Customer (Cliente)
 
-Representa um dispositivo eletrônico pertencente a um cliente.
+Representa um **cliente da assistência técnica**.
 
-Exemplos:
+Um cliente pode possuir **vários dispositivos** que podem precisar de reparo.
 
-- smartphone
-- laptop
-- tablet
+### Atributos
 
-Um dispositivo pertence a um único cliente, mas pode ter várias ordens de serviço ao longo do tempo.
-
-Atributos:
-
-- id
-- customer_id
-- brand
-- model
-- serial_number
+| Atributo | Descrição |
+|---------|-----------|
+| id | Identificador único |
+| name | Nome do cliente |
+| phone | Telefone |
+| email | Email |
+| created_at | Data de criação |
 
 ---
 
-### Technician (Técnico)
+## Device (Dispositivo)
 
-Representa um profissional responsável por executar serviços de reparo.
+Representa um **dispositivo eletrônico pertencente a um cliente**.
 
-Um técnico pode trabalhar em várias ordens de serviço dependendo de sua especialização.
+### Exemplos
 
-Atributos:
+- Smartphone
+- Laptop
+- Tablet
 
-- id
-- name
-- specialization
-- created_at
+Um dispositivo **pertence a um único cliente**, mas pode ter **várias ordens de serviço ao longo do tempo**.
 
----
+### Atributos
 
-### Service Order (Ordem de Serviço)
-
-Representa um pedido de reparo criado para um dispositivo.
-
-Uma ordem de serviço pode envolver múltiplos técnicos e vários serviços de reparo.
-
-Possíveis status:
-
-- OPEN
-- IN_PROGRESS
-- WAITING_PART
-- COMPLETED
-- CANCELLED
-
-Atributos:
-
-- id
-- device_id
-- status
-- description
-- created_at
+| Atributo | Descrição |
+|---------|-----------|
+| id | Identificador único |
+| customer_id | Cliente proprietário |
+| brand | Marca |
+| model | Modelo |
+| serial_number | Número de série |
 
 ---
 
-### Payment (Pagamento)
+## Technician (Técnico)
 
-Representa um pagamento realizado para uma ordem de serviço.
+Representa um **profissional responsável por executar serviços de reparo**.
 
-Os pagamentos podem ser parciais ou completos dependendo das regras de negócio.
+Um técnico pode trabalhar em **várias ordens de serviço dependendo de sua especialização**.
 
-Atributos:
+### Atributos
 
-- id
-- service_order_id
-- amount
-- payment_method
-- created_at
+| Atributo | Descrição |
+|---------|-----------|
+| id | Identificador único |
+| name | Nome do técnico |
+| specialization | Especialização |
+| created_at | Data de criação |
+
+---
+
+## Service Order (Ordem de Serviço)
+
+Representa um **pedido de reparo criado para um dispositivo**.
+
+Uma ordem de serviço pode envolver:
+
+- Múltiplos técnicos
+- Vários serviços de reparo
+
+### Possíveis Status
+
+
+OPEN
+IN_PROGRESS
+WAITING_PART
+COMPLETED
+CANCELLED
+
+
+### Atributos
+
+| Atributo | Descrição |
+|---------|-----------|
+| id | Identificador único |
+| device_id | Dispositivo relacionado |
+| status | Status atual |
+| description | Descrição do problema |
+| created_at | Data de criação |
+
+---
+
+## Payment (Pagamento)
+
+Representa um **pagamento realizado para uma ordem de serviço**.
+
+Os pagamentos podem ser **parciais ou completos**, dependendo das regras de negócio.
+
+### Atributos
+
+| Atributo | Descrição |
+|---------|-----------|
+| id | Identificador único |
+| service_order_id | Ordem de serviço associada |
+| amount | Valor pago |
+| payment_method | Método de pagamento |
+| created_at | Data de criação |
 
 ---
 
@@ -240,9 +283,9 @@ Atributos:
 
 O sistema segue as seguintes regras:
 
-- Um cliente pode possuir vários dispositivos.
-- Um dispositivo pertence a apenas um cliente.
-- Um dispositivo pode ter várias ordens de serviço ao longo do tempo.
-- Uma ordem de serviço pode ter vários técnicos associados.
-- Uma ordem de serviço pode conter múltiplos serviços realizados.
-- Pagamentos podem ser parcelados ou à vista.
+- Um **cliente pode possuir vários dispositivos**
+- Um **dispositivo pertence a apenas um cliente**
+- Um **dispositivo pode ter várias ordens de serviço ao longo do tempo**
+- Uma **ordem de serviço pode ter vários técnicos associados**
+- Uma **ordem de serviço pode conter múltiplos serviços realizados**
+- **Pagamentos podem ser parciais ou completos**
