@@ -265,7 +265,7 @@ CANCELLED
 
 Representa um **pagamento realizado para uma ordem de serviço**.
 
-Os pagamentos podem ser **parciais ou completos**, dependendo das regras de negócio.
+Os pagamentos podem ser **parcelado ou à vista**, dependendo das regras de negócio.
 
 ### Atributos
 
@@ -288,4 +288,4 @@ O sistema segue as seguintes regras:
 - Um **dispositivo pode ter várias ordens de serviço ao longo do tempo**
 - Uma **ordem de serviço pode ter vários técnicos associados**
 - Uma **ordem de serviço pode conter múltiplos serviços realizados**
-- **Pagamentos podem ser parciais ou completos**
+- **Pagamentos podem ser parcelado ou à vista**
